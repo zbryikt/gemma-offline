@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 /// 聊天視圖模型
 class ChatViewModel: ObservableObject {
@@ -15,6 +16,15 @@ class ChatViewModel: ObservableObject {
     
     // 用戶輸入
     @Published var userInput: String = ""
+    
+    // 選擇的圖片
+    @Published var selectedImage: UIImage?
+    
+    // 是否顯示圖片選擇器
+    @Published var showImagePicker: Bool = false
+    
+    // 圖片來源（相機或圖庫）
+    @Published var imageSource: ImageSource = .photoLibrary
     
     // 是否正在處理請求
     @Published var isProcessing: Bool = false
@@ -82,7 +92,7 @@ class ChatViewModel: ObservableObject {
     
     /// 發送消息
     func sendMessage() async {
-        guard !userInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+        guard !userInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || selectedImage != nil else {
             return
         }
         
@@ -108,14 +118,29 @@ class ChatViewModel: ObservableObject {
             }
         }
         
-        // 添加用戶消息
-        let userMessage = ChatMessage(content: userInput, type: .user)
+        // 創建用戶消息
+        var userMessage: ChatMessage
         let userInput = self.userInput // 保存當前輸入
+        
+        // 根據是否有圖片來創建不同類型的消息
+        if let image = selectedImage {
+            if userInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                // 只有圖片
+                userMessage = ChatMessage(content: "[圖片]", type: .user, contentType: .image, image: image)
+            } else {
+                // 圖片和文字
+                userMessage = ChatMessage(content: userInput, type: .user, contentType: .textWithImage, image: image)
+            }
+        } else {
+            // 只有文字
+            userMessage = ChatMessage(content: userInput, type: .user)
+        }
         
         // 在主線程更新 UI
         await MainActor.run {
             messages.append(userMessage)
             self.userInput = ""
+            self.selectedImage = nil
             isProcessing = true
         }
         
@@ -130,7 +155,15 @@ class ChatViewModel: ObservableObject {
         
         do {
             // 使用流式回應
-            let responseStream = modelManager.generateResponseStream(for: userInput)
+            let responseStream: AsyncThrowingStream<String, Error>
+            
+            if let image = userMessage.image {
+                // 如果有圖片，使用帶圖片的生成方法
+                responseStream = modelManager.generateResponseStreamWithImage(for: userInput, image: image)
+            } else {
+                // 如果沒有圖片，使用普通的生成方法
+                responseStream = modelManager.generateResponseStream(for: userInput)
+            }
             
             // 逐步更新回應
             for try await partialResponse in responseStream {
@@ -196,5 +229,22 @@ class ChatViewModel: ObservableObject {
     /// 清空聊天記錄
     func clearChat() {
         messages.removeAll()
+    }
+    
+    /// 顯示圖片選擇器（相機）
+    func showCamera() {
+        imageSource = .camera
+        showImagePicker = true
+    }
+    
+    /// 顯示圖片選擇器（圖庫）
+    func showPhotoLibrary() {
+        imageSource = .photoLibrary
+        showImagePicker = true
+    }
+    
+    /// 清除選擇的圖片
+    func clearSelectedImage() {
+        selectedImage = nil
     }
 }

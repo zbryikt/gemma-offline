@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = ChatViewModel()
+    @State private var showImagePicker = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -109,11 +110,18 @@ struct ContentView: View {
             // 輸入區域
             ChatInputView(
                 text: $viewModel.userInput,
+                selectedImage: $viewModel.selectedImage,
                 isProcessing: viewModel.isProcessing,
                 onSend: {
                     Task {
                         await viewModel.sendMessage()
                     }
+                },
+                onCameraSelect: {
+                    viewModel.showCamera()
+                },
+                onPhotoLibrarySelect: {
+                    viewModel.showPhotoLibrary()
                 }
             )
         }
@@ -127,6 +135,10 @@ struct ContentView: View {
             Task {
                 await viewModel.checkModelStatus()
             }
+        }
+        .sheet(isPresented: $viewModel.showImagePicker) {
+            // 圖片選擇器
+            ImagePickerView(selectedImage: $viewModel.selectedImage, source: viewModel.imageSource)
         }
     }
 }

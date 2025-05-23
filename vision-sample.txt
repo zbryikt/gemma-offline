@@ -1,0 +1,55 @@
+import UIKit
+import MediaPipeTasksGenAI
+
+class GemmaModelManager {
+    private let inference: LlmInference
+
+    init?(modelPath: String) {
+        do {
+            let options = LlmInference.Options(modelPath: modelPath)
+            self.inference = try LlmInference(options: options)
+        } catch {
+            print("[Gemma] 初始化模型失敗：\(error)")
+            return nil
+        }
+    }
+
+    /// 將 UIImage resize 成正方形 CGImage
+    private func resizeImageToSquare(_ image: UIImage, size: CGFloat = 512) -> CGImage? {
+        let targetSize = CGSize(width: size, height: size)
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, 1.0)
+        image.draw(in: CGRect(origin: .zero, size: targetSize))
+        let resized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resized?.cgImage
+    }
+
+    /// 圖片與 prompt 一起送進模型做推論
+    func analyze(image: UIImage, prompt: String, completion: @escaping (String?) -> Void) {
+        DispatchQueue.global().async {
+            do {
+                let sessionOptions = LlmInference.Session.Options()
+                sessionOptions.enableVisionModality = true
+
+                let session = try LlmInference.Session(llmInference: self.inference, options: sessionOptions)
+
+                guard let cgImage = self.resizeImageToSquare(image) else {
+                    DispatchQueue.main.async { completion("圖片轉換失敗") }
+                    return
+                }
+
+                try session.addImage(image: cgImage)
+                try session.addQueryChunk(inputText: prompt)
+                let result = try session.generateResponse()
+
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion("推論過程錯誤：\(error)")
+                }
+            }
+        }
+    }
+}
