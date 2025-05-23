@@ -1,0 +1,65 @@
+*.task
+# Xcode
+*.xcuserstate
+*.xccheckout
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/xcshareddata/WorkspaceSettings.xcsettings
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+!*.xcworkspace/xcshareddata/
+!*.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
+# User-specific Xcode data
+xcuserdata/
+
+# SwiftPM
+.build/
+.swiftpm/xcode/package.xcworkspace/
+
+# DerivedData
+DerivedData/
+
+# Index
+*.hmap
+*.ipa
+
+# Logs
+*.log
+
+# macOS metadata
+.DS_Store
+
+# Build products
+build/
+*.app
+*.dSYM
+*.o
+*.linkfilelist
+
+# Pods (CocoaPods)
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/
+Carthage.build/
+
+# fastlane
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+
+# Xcode Playground
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+Package.resolved
+.xcpackage/
+
+# Others
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint

@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9526E18DE946A8238AA0F960 /* Pods_gemma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292C0CB6F84F91481B308A81 /* Pods_gemma.framework */; };
+		DA6B185C2DDF4FC700942475 /* gemma-3n-E4B-it-int4.task in Resources */ = {isa = PBXBuildFile; fileRef = DA6B185B2DDF4FC700942475 /* gemma-3n-E4B-it-int4.task */; };
+		DA85A1CD2DDF590C00C7E8C5 /* MediaPipeTasksGenAI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA85A1CC2DDF590C00C7E8C5 /* MediaPipeTasksGenAI.xcframework */; };
+		DA85A1CF2DDF590C00C7E8C5 /* MediaPipeTasksGenAIC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA85A1CE2DDF590C00C7E8C5 /* MediaPipeTasksGenAIC.xcframework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DA6B183F2DDF4FA900942475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA6B18262DDF4FA600942475 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA6B182D2DDF4FA600942475;
+			remoteInfo = gemma;
+		};
+		DA6B18492DDF4FA900942475 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA6B18262DDF4FA600942475 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA6B182D2DDF4FA600942475;
+			remoteInfo = gemma;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		292C0CB6F84F91481B308A81 /* Pods_gemma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gemma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38ACF95B87F1DAA7772F97B6 /* Pods-gemma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gemma.debug.xcconfig"; path = "Target Support Files/Pods-gemma/Pods-gemma.debug.xcconfig"; sourceTree = "<group>"; };
+		940A2FBF7A35C75B0F6F4321 /* Pods-gemma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gemma.release.xcconfig"; path = "Target Support Files/Pods-gemma/Pods-gemma.release.xcconfig"; sourceTree = "<group>"; };
+		DA6B182E2DDF4FA600942475 /* gemma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gemma.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6B183E2DDF4FA900942475 /* gemmaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gemmaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6B18482DDF4FA900942475 /* gemmaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gemmaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6B185B2DDF4FC700942475 /* gemma-3n-E4B-it-int4.task */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gemma-3n-E4B-it-int4.task"; sourceTree = "<group>"; };
+		DA85A1CC2DDF590C00C7E8C5 /* MediaPipeTasksGenAI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MediaPipeTasksGenAI.xcframework; path = Pods/MediaPipeTasksGenAI/frameworks/MediaPipeTasksGenAI.xcframework; sourceTree = "<group>"; };
+		DA85A1CE2DDF590C00C7E8C5 /* MediaPipeTasksGenAIC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MediaPipeTasksGenAIC.xcframework; path = Pods/MediaPipeTasksGenAIC/frameworks/MediaPipeTasksGenAIC.xcframework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		DA6B18302DDF4FA600942475 /* gemma */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = gemma;
+			sourceTree = "<group>";
+		};
+		DA6B18412DDF4FA900942475 /* gemmaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = gemmaTests;
+			sourceTree = "<group>";
+		};
+		DA6B184B2DDF4FA900942475 /* gemmaUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = gemmaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DA6B182B2DDF4FA600942475 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA85A1CD2DDF590C00C7E8C5 /* MediaPipeTasksGenAI.xcframework in Frameworks */,
+				DA85A1CF2DDF590C00C7E8C5 /* MediaPipeTasksGenAIC.xcframework in Frameworks */,
+				9526E18DE946A8238AA0F960 /* Pods_gemma.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6B183B2DDF4FA900942475 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6B18452DDF4FA900942475 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17303B8CF8E651F3BEBA0612 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38ACF95B87F1DAA7772F97B6 /* Pods-gemma.debug.xcconfig */,
+				940A2FBF7A35C75B0F6F4321 /* Pods-gemma.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		940A78590CA69C1358942072 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA85A1CC2DDF590C00C7E8C5 /* MediaPipeTasksGenAI.xcframework */,
+				DA85A1CE2DDF590C00C7E8C5 /* MediaPipeTasksGenAIC.xcframework */,
+				292C0CB6F84F91481B308A81 /* Pods_gemma.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA6B18252DDF4FA600942475 = {
+			isa = PBXGroup;
+			children = (
+				DA6B185B2DDF4FC700942475 /* gemma-3n-E4B-it-int4.task */,
+				DA6B18302DDF4FA600942475 /* gemma */,
+				DA6B18412DDF4FA900942475 /* gemmaTests */,
+				DA6B184B2DDF4FA900942475 /* gemmaUITests */,
+				DA6B182F2DDF4FA600942475 /* Products */,
+				17303B8CF8E651F3BEBA0612 /* Pods */,
+				940A78590CA69C1358942072 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DA6B182F2DDF4FA600942475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA6B182E2DDF4FA600942475 /* gemma.app */,
+				DA6B183E2DDF4FA900942475 /* gemmaTests.xctest */,
+				DA6B18482DDF4FA900942475 /* gemmaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA6B182D2DDF4FA600942475 /* gemma */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA6B18522DDF4FA900942475 /* Build configuration list for PBXNativeTarget "gemma" */;
+			buildPhases = (
+				57DB165B4760E32E5A8DFB9A /* [CP] Check Pods Manifest.lock */,
+				DA6B182A2DDF4FA600942475 /* Sources */,
+				DA6B182B2DDF4FA600942475 /* Frameworks */,
+				DA6B182C2DDF4FA600942475 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DA6B18302DDF4FA600942475 /* gemma */,
+			);
+			name = gemma;
+			productName = gemma;
+			productReference = DA6B182E2DDF4FA600942475 /* gemma.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DA6B183D2DDF4FA900942475 /* gemmaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA6B18552DDF4FA900942475 /* Build configuration list for PBXNativeTarget "gemmaTests" */;
+			buildPhases = (
+				DA6B183A2DDF4FA900942475 /* Sources */,
+				DA6B183B2DDF4FA900942475 /* Frameworks */,
+				DA6B183C2DDF4FA900942475 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA6B18402DDF4FA900942475 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DA6B18412DDF4FA900942475 /* gemmaTests */,
+			);
+			name = gemmaTests;
+			productName = gemmaTests;
+			productReference = DA6B183E2DDF4FA900942475 /* gemmaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DA6B18472DDF4FA900942475 /* gemmaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA6B18582DDF4FA900942475 /* Build configuration list for PBXNativeTarget "gemmaUITests" */;
+			buildPhases = (
+				DA6B18442DDF4FA900942475 /* Sources */,
+				DA6B18452DDF4FA900942475 /* Frameworks */,
+				DA6B18462DDF4FA900942475 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DA6B184A2DDF4FA900942475 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				DA6B184B2DDF4FA900942475 /* gemmaUITests */,
+			);
+			name = gemmaUITests;
+			productName = gemmaUITests;
+			productReference = DA6B18482DDF4FA900942475 /* gemmaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA6B18262DDF4FA600942475 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					DA6B182D2DDF4FA600942475 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					DA6B183D2DDF4FA900942475 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = DA6B182D2DDF4FA600942475;
+					};
+					DA6B18472DDF4FA900942475 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = DA6B182D2DDF4FA600942475;
+					};
+				};
+			};
+			buildConfigurationList = DA6B18292DDF4FA600942475 /* Build configuration list for PBXProject "gemma" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DA6B18252DDF4FA600942475;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DA6B182F2DDF4FA600942475 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA6B182D2DDF4FA600942475 /* gemma */,
+				DA6B183D2DDF4FA900942475 /* gemmaTests */,
+				DA6B18472DDF4FA900942475 /* gemmaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DA6B182C2DDF4FA600942475 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA6B185C2DDF4FC700942475 /* gemma-3n-E4B-it-int4.task in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6B183C2DDF4FA900942475 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6B18462DDF4FA900942475 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57DB165B4760E32E5A8DFB9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gemma-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA6B182A2DDF4FA600942475 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6B183A2DDF4FA900942475 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6B18442DDF4FA900942475 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DA6B18402DDF4FA900942475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA6B182D2DDF4FA600942475 /* gemma */;
+			targetProxy = DA6B183F2DDF4FA900942475 /* PBXContainerItemProxy */;
+		};
+		DA6B184A2DDF4FA900942475 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA6B182D2DDF4FA600942475 /* gemma */;
+			targetProxy = DA6B18492DDF4FA900942475 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DA6B18502DDF4FA900942475 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DA6B18512DDF4FA900942475 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DA6B18532DDF4FA900942475 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38ACF95B87F1DAA7772F97B6 /* Pods-gemma.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"gemma/Preview Content\"";
+				DEVELOPMENT_TEAM = T48FNG6KPZ;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/MediaPipeTasksGenAI/frameworks\"/**",
+					"\"${PODS_ROOT}/MediaPipeTasksGenAIC/frameworks\"/**",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/MediaPipeTasksGenAI\"/**",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/MediaPipeTasksGenAIC\"/**",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = plotdb.gemma;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA6B18542DDF4FA900942475 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 940A2FBF7A35C75B0F6F4321 /* Pods-gemma.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"gemma/Preview Content\"";
+				DEVELOPMENT_TEAM = T48FNG6KPZ;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/MediaPipeTasksGenAI/frameworks\"/**",
+					"\"${PODS_ROOT}/MediaPipeTasksGenAIC/frameworks\"/**",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/MediaPipeTasksGenAI\"/**",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/MediaPipeTasksGenAIC\"/**",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = plotdb.gemma;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DA6B18562DDF4FA900942475 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T48FNG6KPZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = plotdb.gemmaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gemma.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/gemma";
+			};
+			name = Debug;
+		};
+		DA6B18572DDF4FA900942475 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T48FNG6KPZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = plotdb.gemmaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gemma.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/gemma";
+			};
+			name = Release;
+		};
+		DA6B18592DDF4FA900942475 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T48FNG6KPZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = plotdb.gemmaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = gemma;
+			};
+			name = Debug;
+		};
+		DA6B185A2DDF4FA900942475 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T48FNG6KPZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = plotdb.gemmaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = gemma;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA6B18292DDF4FA600942475 /* Build configuration list for PBXProject "gemma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6B18502DDF4FA900942475 /* Debug */,
+				DA6B18512DDF4FA900942475 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA6B18522DDF4FA900942475 /* Build configuration list for PBXNativeTarget "gemma" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6B18532DDF4FA900942475 /* Debug */,
+				DA6B18542DDF4FA900942475 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA6B18552DDF4FA900942475 /* Build configuration list for PBXNativeTarget "gemmaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6B18562DDF4FA900942475 /* Debug */,
+				DA6B18572DDF4FA900942475 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA6B18582DDF4FA900942475 /* Build configuration list for PBXNativeTarget "gemmaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6B18592DDF4FA900942475 /* Debug */,
+				DA6B185A2DDF4FA900942475 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DA6B18262DDF4FA600942475 /* Project object */;
+}
