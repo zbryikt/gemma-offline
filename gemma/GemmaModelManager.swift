@@ -76,9 +76,20 @@ class GemmaModelManager {
             options.maxTopk = 40
             options.maxImages = 1  // 設置最大圖片數量
             
-            // 假設模型本身支援視覺模態
+            // 明確啟用視覺模態支持
             isVisionModalityAvailable = true
-            print("假設 Gemma 模型支援視覺模態")
+            print("已啟用 Gemma 模型的視覺模態支持")
+            
+            // 檢查是否有視覺編碼器和適配器路徑
+            if let visionEncoderPath = Bundle.main.path(forResource: "vision_encoder", ofType: "task") {
+                options.visionEncoderPath = visionEncoderPath
+                print("找到視覺編碼器：\(visionEncoderPath)")
+            }
+            
+            if let visionAdapterPath = Bundle.main.path(forResource: "vision_adapter", ofType: "task") {
+                options.visionAdapterPath = visionAdapterPath
+                print("找到視覺適配器：\(visionAdapterPath)")
+            }
             
             // 注意：temperature 和 randomSeed 屬性在 LlmInference.Session.Options 中設置
             // 我們將在創建 Session 時設置這些參數
@@ -115,6 +126,7 @@ class GemmaModelManager {
             // 如果視覺模態可用，啟用它
             if isVisionModalityAvailable {
                 sessionOptions.enableVisionModality = true
+                print("會話已啟用視覺模態")
             }
             
             let session = try LlmInference.Session(llmInference: llmInference, options: sessionOptions)
@@ -165,6 +177,7 @@ class GemmaModelManager {
                 // 如果視覺模態可用，啟用它
                 if isVisionModalityAvailable {
                     sessionOptions.enableVisionModality = true
+                    print("流式會話已啟用視覺模態")
                 }
                 
                 print("創建新的 Session")
@@ -212,30 +225,137 @@ class GemmaModelManager {
         }
     }
     
-    /// 將圖片轉換為正方形 CGImage
+    /// 將 UIImage 轉換為 CVPixelBuffer
     /// - Parameters:
     ///   - image: 原始圖片
-    ///   - size: 目標尺寸（默認為 512x512）
-    /// - Returns: 轉換後的 CGImage，如果轉換失敗則返回 nil
-    private func resizeImageToSquare(_ image: UIImage, size: CGFloat = 512) -> CGImage? {
-        let targetSize = CGSize(width: size, height: size)
-        UIGraphicsBeginImageContextWithOptions(targetSize, false, 1.0)
-        defer { UIGraphicsEndImageContext() }
-        
-        // 繪製圖片到指定尺寸
-        image.draw(in: CGRect(origin: .zero, size: targetSize))
-        
-        // 獲取結果圖片
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        let cgImage = resizedImage?.cgImage
-        
-        if cgImage != nil {
-            print("圖片已成功轉換為 \(size)x\(size) 的正方形")
-        } else {
-            print("圖片轉換失敗")
+    ///   - size: 目標尺寸（默認為 224x224，這是許多視覺模型的標準輸入尺寸）
+    /// - Returns: 轉換後的 CVPixelBuffer，如果轉換失敗則返回 nil
+    private func pixelBuffer(from image: UIImage, size: CGSize = CGSize(width: 224, height: 224)) -> CVPixelBuffer? {
+        // 首先調整圖片大小
+        let resizedImage = resizeImage(image: image, size: size)
+        guard let cgImage = resizedImage?.cgImage else {
+            print("無法獲取 CGImage")
+            return nil
         }
         
+        // 創建 CVPixelBuffer 的屬性
+        let attrs: [CFString: Any] = [
+            kCVPixelBufferCGImageCompatibilityKey: true,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: true
+        ]
+        
+        var pixelBuffer: CVPixelBuffer?
+        let status = CVPixelBufferCreate(
+            kCFAllocatorDefault,
+            Int(size.width),
+            Int(size.height),
+            kCVPixelFormatType_32BGRA,
+            attrs as CFDictionary,
+            &pixelBuffer
+        )
+        
+        guard status == kCVReturnSuccess, let buffer = pixelBuffer else {
+            print("創建 CVPixelBuffer 失敗: \(status)")
+            return nil
+        }
+        
+        // 鎖定 buffer 的基地址以進行寫入
+        CVPixelBufferLockBaseAddress(buffer, [])
+        defer { CVPixelBufferUnlockBaseAddress(buffer, []) }
+        
+        // 創建 CGContext 並繪製圖片
+        let context = CGContext(
+            data: CVPixelBufferGetBaseAddress(buffer),
+            width: Int(size.width),
+            height: Int(size.height),
+            bitsPerComponent: 8,
+            bytesPerRow: CVPixelBufferGetBytesPerRow(buffer),
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue
+        )
+        
+        guard let ctx = context else {
+            print("無法創建 CGContext")
+            return nil
+        }
+        
+        // 繪製圖片到 context
+        ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        print("成功創建 \(size.width)x\(size.height) 的 CVPixelBuffer")
+        return buffer
+    }
+    
+    /// 調整圖片大小
+    /// - Parameters:
+    ///   - image: 原始圖片
+    ///   - size: 目標尺寸
+    /// - Returns: 調整大小後的 UIImage
+    private func resizeImage(image: UIImage, size: CGSize) -> UIImage? {
+        // 確保圖片方向正確
+        let imageWithCorrectOrientation = fixOrientation(image)
+        
+        // 使用高質量的縮放方法
+        UIGraphicsBeginImageContextWithOptions(size, true, 2.0)
+        defer { UIGraphicsEndImageContext() }
+        
+        // 填充白色背景
+        UIColor.white.setFill()
+        UIRectFill(CGRect(origin: .zero, size: size))
+        
+        // 計算保持縱橫比的繪製區域
+        let aspectRatio = imageWithCorrectOrientation.size.width / imageWithCorrectOrientation.size.height
+        var drawRect = CGRect(origin: .zero, size: size)
+        
+        if aspectRatio > 1 {
+            // 寬圖片
+            let newHeight = size.width / aspectRatio
+            let yOffset = (size.height - newHeight) / 2
+            drawRect = CGRect(x: 0, y: yOffset, width: size.width, height: newHeight)
+        } else if aspectRatio < 1 {
+            // 高圖片
+            let newWidth = size.height * aspectRatio
+            let xOffset = (size.width - newWidth) / 2
+            drawRect = CGRect(x: xOffset, y: 0, width: newWidth, height: size.height)
+        }
+        
+        // 繪製圖片到指定區域，保持縱橫比
+        imageWithCorrectOrientation.draw(in: drawRect)
+        
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        print("圖片已調整為 \(size.width)x\(size.height)，保持縱橫比")
+        
+        return resizedImage
+    }
+    
+    /// 從 CVPixelBuffer 創建 CGImage
+    /// - Parameter pixelBuffer: 輸入的 CVPixelBuffer
+    /// - Returns: 轉換後的 CGImage
+    private func cgImage(from pixelBuffer: CVPixelBuffer) -> CGImage? {
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+        let context = CIContext()
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
+            print("無法從 CVPixelBuffer 創建 CGImage")
+            return nil
+        }
+        print("成功從 CVPixelBuffer 創建 CGImage")
         return cgImage
+    }
+    
+    /// 修正圖片方向
+    private func fixOrientation(_ image: UIImage) -> UIImage {
+        if image.imageOrientation == .up {
+            return image
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+        defer { UIGraphicsEndImageContext() }
+        
+        image.draw(in: CGRect(origin: .zero, size: image.size))
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        print("已修正圖片方向")
+        return normalizedImage
     }
     
     /// 生成包含圖片的回應（流式版本）
@@ -272,12 +392,15 @@ class GemmaModelManager {
             }
             
             do {
-                // 為每次請求創建一個新的 Session
+                // 為每次請求創建一個新的 Session，確保視覺模態正確啟用
                 let sessionOptions = LlmInference.Session.Options()
                 sessionOptions.topk = 40
                 sessionOptions.temperature = 0.7
                 sessionOptions.randomSeed = 101
+                
+                // 明確啟用視覺模態，並確保設置正確
                 sessionOptions.enableVisionModality = true
+                print("視覺模態已啟用：\(sessionOptions.enableVisionModality)")
                 
                 print("創建新的 Session（帶圖片）")
                 let session = try LlmInference.Session(llmInference: llmInference, options: sessionOptions)
@@ -286,18 +409,28 @@ class GemmaModelManager {
                 // 解鎖，允許其他操作
                 sessionLock.unlock()
                 
-                // 將圖片轉換為 512x512 的正方形 CGImage
-                guard let squareCGImage = resizeImageToSquare(image) else {
+                // 參考 Android 實現，先添加查詢文本，再添加圖片
+                // 添加查詢
+                try session.addQueryChunk(inputText: prompt)
+                print("已添加查詢文本到 Session")
+                
+                // 參考 MediaPipe 圖像處理指南，正確處理圖片
+                
+                // 1. 先將 UIImage 轉換為 CVPixelBuffer
+                guard let pixBuffer = pixelBuffer(from: image) else {
+                    print("無法將圖片轉換為 CVPixelBuffer")
                     throw LLMError.imageProcessingFailed
                 }
                 
-                // 注意：先添加圖片，再添加查詢文本，順序很重要
-                // 添加轉換後的圖片到 Session
-                try session.addImage(image: squareCGImage)
-                print("已添加轉換後的圖片到 Session")
+                // 2. 從 CVPixelBuffer 創建 CGImage
+                guard let processedCGImage = cgImage(from: pixBuffer) else {
+                    print("無法從 CVPixelBuffer 創建 CGImage")
+                    throw LLMError.imageProcessingFailed
+                }
                 
-                // 添加查詢
-                try session.addQueryChunk(inputText: prompt)
+                // 3. 添加處理後的圖片到 Session
+                try session.addImage(image: processedCGImage)
+                print("已添加處理後的圖片到 Session，尺寸：\(processedCGImage.width)x\(processedCGImage.height)")
                 
                 // 使用 Session 的流式 API 生成回應
                 let resultStream = try session.generateResponseAsync()

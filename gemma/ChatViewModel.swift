@@ -159,7 +159,18 @@ class ChatViewModel: ObservableObject {
             
             if let image = userMessage.image {
                 // 如果有圖片，使用帶圖片的生成方法
-                responseStream = modelManager.generateResponseStreamWithImage(for: userInput, image: image)
+                print("發送帶圖片的消息，圖片尺寸：\(image.size.width)x\(image.size.height)")
+                
+                // 構建更明確的提示，幫助模型理解圖片
+                var enhancedPrompt = userInput
+                if enhancedPrompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    enhancedPrompt = "請描述這張圖片中的內容。"
+                } else if !enhancedPrompt.contains("圖片") && !enhancedPrompt.contains("照片") {
+                    // 如果用戶的提示中沒有明確提到圖片，添加提示
+                    enhancedPrompt = "關於這張圖片：" + enhancedPrompt
+                }
+                
+                responseStream = modelManager.generateResponseStreamWithImage(for: enhancedPrompt, image: image)
             } else {
                 // 如果沒有圖片，使用普通的生成方法
                 responseStream = modelManager.generateResponseStream(for: userInput)
